@@ -18,16 +18,12 @@ const writeToFile = (data: unknown, fileName: string) => {
 const fetchEntriesAndWriteToFile = async ({
     contentType,
     fileName,
-    withAllLocales
 }: {
     contentType: string;
     fileName: string;
-    withAllLocales?: boolean;
 }) => {
     try {
-        const entries = withAllLocales
-            ? await client.withAllLocales.withoutUnresolvableLinks.getEntries({ content_type: contentType, include: 10 })
-            : await client.getEntries({ content_type: contentType });
+        const entries = await client.withAllLocales.withoutUnresolvableLinks.getEntries({ content_type: contentType, include: 10 });
 
         writeToFile(entries.items, fileName);
         console.log(`Entries successfully written to ${fileName}.json`);
