@@ -33,3 +33,4 @@ const fetchEntriesAndWriteToFile = async ({
 };
 
 fetchEntriesAndWriteToFile({ contentType: "vault", fileName: "vaults" });
+fetchEntriesAndWriteToFile({ contentType: "localizedString", fileName: "localizedStrings"});
